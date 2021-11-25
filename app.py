@@ -3,8 +3,10 @@ import streamlit as st
 
 # custom imports
 from multipage import MultiPage
-from pages import data_upload, index, signin, login
+from pages import index, signin, login
 
+
+auth_staus = False
 # Create instances of the page
 app = MultiPage()
 
@@ -12,13 +14,12 @@ app = MultiPage()
 
 
 # Add all the application (pages) here
-auth_staus = False
-if auth_staus==True:
+
+if auth_staus==False:
     app.add_page("Sign In", signin.app)
     app.add_page("Log In", login.app)
-else:
+if auth_staus == True: 
     st.title("Image Extractor")
-    app.add_page("Upload Data", data_upload.app)
     app.add_page("Index", index.app)
 
 # Main app
